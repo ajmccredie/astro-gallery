@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Morning Light",
+    "src": "https://res.cloudinary.com/demo/image/upload/w_800,l_text:Arial_50:WATERMARK,o_60/sample.jpg",
+    "productId": "PROD12345"
+  },
+  {
+    "title": "Forest Calm",
+    "src": "https://res.cloudinary.com/demo/image/upload/w_800,l_text:Arial_50:WATERMARK,o_60/park.jpg",
+    "productId": "PROD67890"
+  }
+]
