@@ -1,7 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import VideoDoorCard from "../components/VideoDoorCard.jsx";
-import essexDoors from "../data/essex.json";
+
+import essexDoor from "../assets/essex-door.mp4";
+
+const essexDoors = [
+  { title: "Choice 1", videoSrc: essexDoor, link: "choice1" },
+  { title: "Choice 2", videoSrc: essexDoor, link: "choice2" },
+  { title: "Choice 3", videoSrc: essexDoor, link: "choice3" },
+  { title: "Choice 4", videoSrc: essexDoor, link: "choice4" },
+];
 ---
 
 <BaseLayout title="Essex Room">

@@ -1,22 +1,22 @@
 [
   {
     "title": "Flora",
-    "videoSrc": "/assets/essex-door.mp4",
+    "videoSrc": "src/assets/essex-door.mp4",
     "link": "choice1"
   },
   {
     "title": "Fauna",
-    "videoSrc": "/assets/essex-door.mp4",
+    "videoSrc": "src/assets/essex-door.mp4",
     "link": "choice2"
   },
   {
     "title": "Coastline",
-    "videoSrc": "/assets/essex-door.mp4",
+    "videoSrc": "src/assets/essex-door.mp4",
     "link": "choice3"
   },
   {
     "title": "Watercolour Effects",
-    "videoSrc": "/assets/essex-door.mp4",
+    "videoSrc": "src/assets/essex-door.mp4",
     "link": "choice4"
   }
 ]
