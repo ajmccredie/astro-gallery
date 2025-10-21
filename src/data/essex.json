@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Flora",
+    "videoSrc": "/videos/essex-door.mp4",
+    "link": "/choice1"
+  },
+  {
+    "title": "Fauna",
+    "videoSrc": "/videos/essex-door.mp4",
+    "link": "/choice2"
+  },
+  {
+    "title": "Coastline",
+    "videoSrc": "/videos/essex-door.mp4",
+    "link": "/choice3"
+  },
+  {
+    "title": "Watercolour Effects",
+    "videoSrc": "/videos/essex-door.mp4",
+    "link": "/choice4"
+  }
+]

@@ -1,36 +1,23 @@
 ---
-import photos from "../data/photos.json";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import entranceDoors from "../data/entrance.json";
+import VideoDoorCard from "../components/VideoDoorCard.jsx";
+import MenuToggle from "../components/MenuToggle.jsx";
 ---
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Astro Gallery Prototype</title>
-    <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-  </head>
-  <body class="bg-gray-50 min-h-screen p-10">
-    <h1 class="text-4xl font-bold mb-10 text-center">Gallery</h1>
 
-    <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {photos.map((photo) => (
-        <figure class="bg-white rounded-2xl shadow-md p-4">
-          <img
-            src={photo.src}
-            alt={photo.title}
-            class="rounded-xl mb-4"
-            loading="lazy"
-          />
-          <figcaption class="text-lg font-medium mb-3 text-center">
-            {photo.title}
-          </figcaption>
-          <button
-            data-ls-checkout="true"
-            data-ls-product={photo.productId}
-            class="block mx-auto bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800"
-          >
-            Buy High-Res
-          </button>
-        </figure>
+<BaseLayout title="Welcome to the Gallery">
+  <MenuToggle client:load />
+
+  <div class="min-h-screen w-full flex flex-col items-center relative pt-24">
+    <header class="text-center mb-10">
+      <h1 class="text-5xl font-bold font-['Playfair Display'] tracking-tight mb-3">Welcome to the Gallery</h1>
+      <p class="text-lg text-gray-600">Please choose a doorway to enter</p>
+    </header>
+
+    <section class="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 place-items-center py-12">
+      {entranceDoors.map((door) => (
+        <VideoDoorCard client:load title={door.title} videoSrc={door.videoSrc} link={door.link} />
       ))}
     </section>
-  </body>
-</html>
+  </div>
+</BaseLayout>

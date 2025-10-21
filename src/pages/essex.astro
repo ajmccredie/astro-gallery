@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import VideoDoorCard from "../components/VideoDoorCard.jsx";
+import essexDoors from "../data/essex.json";
+---
+
+<BaseLayout title="Essex Room">
+  <div class="min-h-screen w-full flex flex-col items-center bg-[#e8eef7] text-[#222]">
+
+    <!-- Title Section -->
+    <header class="text-center mt-16 mb-10">
+      <h1 class="text-5xl font-bold tracking-tight mb-3">Essex Room</h1>
+      <p class="text-lg text-gray-700">Choose your path...</p>
+    </header>
+
+    <!-- Doors Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 justify-items-center mb-20">
+      {essexDoors.map((door) => (
+        <VideoDoorCard
+          client:load
+          title={door.title}
+          videoSrc={door.videoSrc}
+          link={door.link}
+        />
+      ))}
+    </section>
+
+    <!-- Back Door (smaller section with spacing) -->
+    <div class="mt-10 mb-20">
+      <VideoDoorCard
+        client:load
+        title="Back to Entrance"
+        videoSrc="/videos/back-door.mp4"
+        link="/"
+      />
+    </div>
+
+  </div>
+</BaseLayout>
