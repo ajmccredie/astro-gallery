@@ -1,3 +1,9 @@
+::selection { background: rgba(0,0,0,0.1); }
+
+html, body {
+  scroll-behavior: smooth;
+}
+
 .door-card {
   width: 200px;
   height: 300px;

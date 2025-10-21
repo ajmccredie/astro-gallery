@@ -5,19 +5,19 @@ export default function VideoDoorCard({ title, videoSrc, link }) {
   const cardRef = useRef(null);
   const videoRef = useRef(null);
 
-  const base = import.meta.env.BASE_URL; 
-  const fullLink = `${base.replace(/\/$/, '')}/${link.replace(/^\//, '')}`;
+  // Build a base-safe URL (works locally and on GitHub Pages)
+  const base = import.meta.env.BASE_URL; // e.g. "/astro-gallery/" in prod
+  const fullLink = `${base.replace(/\/$/, "")}/${String(link).replace(/^\//, "")}`;
 
-  function handleClick() {
+  function go() {
     const card = cardRef.current;
     const video = videoRef.current;
-
-    if (card.dataset.animating === "true") return;
+    if (!card || card.dataset.animating === "true") return;
     card.dataset.animating = "true";
 
     if (video) {
       video.currentTime = 0;
-      video.playbackRate = 2; 
+      video.playbackRate = 2; // speed-up
       video.play();
     }
 
@@ -30,18 +30,30 @@ export default function VideoDoorCard({ title, videoSrc, link }) {
       zIndex: 1000,
       duration: 0.9,
       ease: "power3.inOut",
-      onComplete: () => {
-        setTimeout(() => (window.location.href = fullLink), 700);
-      },
+      onComplete: () => setTimeout(() => (window.location.href = fullLink), 650),
     });
+  }
+
+  function onKeyDown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      go();
+    }
   }
 
   return (
     <div
       ref={cardRef}
-      onClick={handleClick}
-      className="relative cursor-pointer overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
-      style={{ width: "220px", height: "330px" }}
+      role="button"
+      tabIndex={0}
+      onClick={go}
+      onKeyDown={onKeyDown}
+      className="
+        relative overflow-hidden rounded-xl bg-black
+        shadow-md hover:shadow-xl transition-transform duration-300
+        hover:scale-[1.04] focus:outline-none focus:ring-2 focus:ring-black/30
+        w-[220px] h-[330px]
+      "
       data-animating="false"
     >
       <video
@@ -51,10 +63,13 @@ export default function VideoDoorCard({ title, videoSrc, link }) {
         playsInline
         preload="metadata"
         className="absolute inset-0 w-full h-full object-cover"
-      ></video>
-
-      {/* Glass Title Overlay */}
-      <div className="absolute bottom-0 w-full text-center text-white py-2 text-lg font-semibold tracking-wide backdrop-blur-md bg-white/20 border-t border-white/30">
+      />
+      {/* glass title bar */}
+      <div className="
+        absolute bottom-0 w-full text-center text-white py-2
+        text-base font-semibold tracking-wide
+        backdrop-blur-md bg-white/20 border-t border-white/30
+      ">
         {title}
       </div>
     </div>
