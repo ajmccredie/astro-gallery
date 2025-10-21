@@ -1,12 +1,12 @@
 [
   {
     "title": "Essex",
-    "videoSrc": "/videos/essex-door.mp4",
+    "videoSrc": "/astro-galleryvideos/essex-door.mp4",
     "link": "/essex"
   },
   {
     "title": "Beyond",
-    "videoSrc": "/videos/beyond-door.mp4",
+    "videoSrc": "/astro-galleryvideos/beyond-door.mp4",
     "link": "/beyond"
   }
 ]
