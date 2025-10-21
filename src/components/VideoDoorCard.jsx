@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
+import { Astro } from "astro";
 
 export default function VideoDoorCard({ title, videoSrc, link }) {
   const cardRef = useRef(null);
