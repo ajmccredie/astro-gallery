@@ -1,38 +1,30 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import VideoDoorCard from "../components/VideoDoorCard.jsx";
+import RoomNavDoors from "../components/RoomNavDoors.jsx";
 
-// Reuse same door video for now
 import essexDoor from "../assets/essex-door.mp4";
 import backDoor from "../assets/back-door.mp4";
-
-const essexDoors = [
-  { title: "Choice 1", videoSrc: essexDoor, link: "choice1" },
-  { title: "Choice 2", videoSrc: essexDoor, link: "choice2" },
-  { title: "Choice 3", videoSrc: essexDoor, link: "choice3" },
-  { title: "Choice 4", videoSrc: essexDoor, link: "choice4" },
-];
+import homeDoor from "../assets/home-door.mp4";
 ---
 
 <BaseLayout title="Essex Room">
-  <div class="min-h-screen w-full bg-[#e8eef7]">
-    <div class="pt-24 pb-16">
-      <header class="text-center mb-10">
-        <h1 class="text-5xl font-['Playfair Display'] font-bold tracking-tight mb-3">
-          Essex Room
-        </h1>
-        <p class="text-lg text-gray-700">Choose your path…</p>
-      </header>
+  <div class="min-h-screen bg-[#e8eef7] text-center pt-24 pb-16">
+    <h1 class="text-5xl font-['Playfair Display'] font-bold mb-3">Essex Room</h1>
+    <p class="text-lg text-gray-700 mb-12">Choose your path…</p>
 
-      <section class="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 place-items-center">
-        {essexDoors.map((door) => (
-          <VideoDoorCard client:load title={door.title} videoSrc={door.videoSrc} link={door.link} />
-        ))}
-      </section>
+    <section class="gallery-grid">
+      <VideoDoorCard client:load title="Choice 1" videoSrc={essexDoor} link="choice1" />
+      <VideoDoorCard client:load title="Choice 2" videoSrc={essexDoor} link="choice2" />
+      <VideoDoorCard client:load title="Choice 3" videoSrc={essexDoor} link="choice3" />
+      <VideoDoorCard client:load title="Choice 4" videoSrc={essexDoor} link="choice4" />
+    </section>
 
-      <div class="mt-12 flex justify-center">
-        <VideoDoorCard client:load title="Back to Entrance" videoSrc={backDoor} link="" />
-      </div>
-    </div>
+    <RoomNavDoors client:load
+      prevLink="beyond"
+      prevTitle="Back to Beyond"
+      prevVideo={backDoor}
+      homeVideo={homeDoor}
+    />
   </div>
 </BaseLayout>

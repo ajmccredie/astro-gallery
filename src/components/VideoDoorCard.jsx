@@ -5,8 +5,8 @@ export default function VideoDoorCard({ title, videoSrc, link }) {
   const cardRef = useRef(null);
   const videoRef = useRef(null);
 
-  // Build a base-safe URL (works locally and on GitHub Pages)
-  const base = import.meta.env.BASE_URL; // e.g. "/astro-gallery/" in prod
+  // Base-safe link for GitHub Pages (e.g., "/astro-gallery/")
+  const base = import.meta.env.BASE_URL;
   const fullLink = `${base.replace(/\/$/, "")}/${String(link).replace(/^\//, "")}`;
 
   function go() {
@@ -17,7 +17,7 @@ export default function VideoDoorCard({ title, videoSrc, link }) {
 
     if (video) {
       video.currentTime = 0;
-      video.playbackRate = 2; // speed-up
+      video.playbackRate = 1.6;
       video.play();
     }
 
@@ -44,18 +44,11 @@ export default function VideoDoorCard({ title, videoSrc, link }) {
   return (
     <div
       ref={cardRef}
-      role="button"
-      tabIndex={0}
       onClick={go}
-      onKeyDown={onKeyDown}
-      className="
-        relative overflow-hidden rounded-xl bg-black
-        shadow-md hover:shadow-xl transition-transform duration-300
-        hover:scale-[1.04] focus:outline-none focus:ring-2 focus:ring-black/30
-        w-[220px] h-[330px]
-      "
+      className="door-card"
       data-animating="false"
     >
+
       <video
         ref={videoRef}
         src={videoSrc}
@@ -64,12 +57,13 @@ export default function VideoDoorCard({ title, videoSrc, link }) {
         preload="metadata"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {/* glass title bar */}
-      <div className="
-        absolute bottom-0 w-full text-center text-white py-2
-        text-base font-semibold tracking-wide
-        backdrop-blur-md bg-white/20 border-t border-white/30
-      ">
+      <div
+        className="
+          absolute bottom-0 w-full text-center text-white py-2
+          text-base font-semibold tracking-wide
+          backdrop-blur-md bg-black/40
+        "
+      >
         {title}
       </div>
     </div>

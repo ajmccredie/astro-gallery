@@ -5,7 +5,7 @@ export default function MenuToggle() {
 
   return (
     <div className="absolute top-6 right-6 md:right-12 z-50">
-      {/* Burger button (mobile only) */}
+      {/* Burger button (mobile) */}
       <button
         className="md:hidden flex flex-col justify-center items-center w-10 h-10"
         onClick={() => setOpen(!open)}

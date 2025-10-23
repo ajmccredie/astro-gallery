@@ -2,8 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import VideoDoorCard from "../components/VideoDoorCard.jsx";
 import MenuToggle from "../components/MenuToggle.jsx";
+import FloatingMenu from "../components/FloatingMenu.jsx";
+import VideoDoorCard from "../components/VideoDoorCard.jsx";
 
-// Import videos as Astro-managed assets so paths work in production
+// Astro-managed video assets
 import essexDoor from "../assets/essex-door.mp4";
 import beyondDoor from "../assets/beyond-door.mp4";
 
@@ -14,22 +16,15 @@ const entranceDoors = [
 ---
 
 <BaseLayout title="Welcome to the Gallery">
-  <!-- floating menu -->
-  <MenuToggle client:load />
+  <FloatingMenu client:load />
 
-  <div class="pt-24 pb-16">
-    <header class="text-center mb-10">
-      <h1 class="text-5xl font-['Playfair Display'] font-bold tracking-tight mb-3">
-        Welcome to the Gallery
-      </h1>
-      <p class="text-lg text-gray-700">Please choose a doorway to enter</p>
-    </header>
+  <div class="pt-24 pb-16 text-center">
+    <h1 class="text-5xl font-['Playfair Display'] font-bold mb-3">Welcome to the Gallery</h1>
+    <p class="text-lg text-gray-700 mb-12">Please choose a doorway to enter</p>
 
-    <!-- responsive door grid -->
-    <section class="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 place-items-center">
-      {entranceDoors.map((door) => (
-        <VideoDoorCard client:load title={door.title} videoSrc={door.videoSrc} link={door.link} />
-      ))}
+    <section class="gallery-grid">
+      <VideoDoorCard client:load title="Essex" videoSrc={essexDoor} link="essex" />
+      <VideoDoorCard client:load title="Beyond" videoSrc={beyondDoor} link="beyond" />
     </section>
   </div>
 </BaseLayout>
